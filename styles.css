@@ -1,0 +1,119 @@
+/* Basic Setup */
+body {
+    font-family: sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.container {
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 🎨✨ PART 1: CSS3 Transitions and Animations */
+
+/* --- 1a. Transition on Button Hover --- */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    /* Define the transition property for smooth changes */
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+}
+
+button:hover {
+    /* The state to transition to on hover */
+    transform: scale(1.1);
+    background-color: #0056b3;
+}
+
+/* --- 1b. Continuous Animation with @keyframes --- */
+.box {
+    width: 150px;
+    height: 150px;
+    background-color: #ff5722;
+    border-radius: 15px;
+    margin: 40px auto;
+    /* Apply the 'float' animation by default */
+    animation: float 3s ease-in-out infinite;
+    cursor: pointer;
+    transition: background-color 0.5s ease; /* For JS color change */
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* --- 1c. Triggered Animation (to be added by JavaScript) --- */
+.box.shake {
+    /* This animation will only run when the 'shake' class is on the element */
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10% { transform: translateX(-10px); }
+    30% { transform: translateX(10px); }
+    50% { transform: translateX(-10px); }
+    70% { transform: translateX(10px); }
+    90% { transform: translateX(-10px); }
+}
+
+/* --- Modal Styling for Part 3 --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Start hidden and use transition for opacity */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.visible {
+    /* Class added by JS to show the modal */
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    /* Start slightly scaled down and use transition */
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+/* When the modal is visible, the content scales to normal size */
+.modal-overlay.visible .modal-content {
+    transform: scale(1);
+}
